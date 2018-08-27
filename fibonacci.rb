@@ -1,12 +1,16 @@
-@cache = {
-  0 => 0,
-  1 => 1,
-  2 => 1
-}
-
-n = 100
-
 def fibonacci(n)
-  @cache[n] ||= fibonacci(n-1) + fibonacci(n-2)
+  pos_1 = 0
+  pos_2 = 1
+  current_val = 0
+  pointer = 2
+
+  while pointer <= n
+    current_val = pos_1 + pos_2
+    pos_1 = pos_2
+    pos_2 = current_val
+    pointer += 1
+  end
+  puts current_val
 end
-puts "#{n}'s fibonacci value: #{fibonacci(n)}"
+
+fibonacci(100)
